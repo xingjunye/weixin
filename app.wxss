@@ -1,0 +1,13 @@
+page,view,text,swiper,swiper-item,image,nav{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+page{
+  --themeColor: #0094ff;
+}
+
+image{
+  width: 100%;
+}
