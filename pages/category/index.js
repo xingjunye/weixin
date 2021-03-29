@@ -1,6 +1,7 @@
 // pages/category/index.js
 import { urls } from '../../utils/config.js'
 import { request } from '../../request/index.js'
+import regeneratorRuntime from '../../lib/runtime/runtime'
 
 const { base } = urls;
 
@@ -15,19 +16,21 @@ Page({
     active: 0,
     scrollTop: 0
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    request(`${base}/categories`)
-      .then(result => {
-        this.setData({
-          menuList: result.data.message,
-          goodslist: result.data.message[0].children
-        })
-      })
+    this.getCates();
   },
+
+  async getCates() {
+    const res = await request(`${base}/categories`);
+    this.setData({
+      menuList: res.data.message,
+      goodslist: res.data.message[0].children
+    })
+  },
+
   handleActive(e) {
     const { index } = e.target.dataset;
     this.setData({

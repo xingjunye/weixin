@@ -1,5 +1,7 @@
 import { urls } from '../../utils/config.js'
 import { request } from "../../request/index.js"
+import regeneratorRuntime from '../../lib/runtime/runtime'
+
 const { base } = urls;
 //Page Object
 Page({
@@ -18,32 +20,26 @@ Page({
     this.getFloorList();
   },
   //获取轮播图数据
-  getSwiperList() {
-    request(`${base}/home/swiperdata`)
-    .then(result => {
-      this.setData({
-        swiperList: result.data.message
-      })
+  async getSwiperList() {
+    const res = await request(`${base}/home/swiperdata`);
+    this.setData({
+      swiperList: res.data.message
     });
   },
   //获取导航数据
-  getCateList() {
-    request(`${base}/home/catitems`)
-    .then(result => {
-      this.setData({
-        cateList: result.data.message
-      })
-    });
+  async getCateList() {
+    const res = await request(`${base}/home/catitems`)
+    this.setData({
+      cateList: res.data.message
+    })
   },
   //
   //获取楼层数据
-  getFloorList() {
-    request('https://api-hmugo-web.itheima.net/api/public/v1/home/floordata')
-    .then(result => {
-      this.setData({
-        floorList: result.data.message
-      })
-    });
+  async getFloorList() {
+    const res = await request('https://api-hmugo-web.itheima.net/api/public/v1/home/floordata')
+    this.setData({
+      floorList: res.data.message
+    })
   },
   //
 });
