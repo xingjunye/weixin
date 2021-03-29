@@ -1,2 +1,9 @@
 <SearchInput></SearchInput>
-<Tabs tabs="{{Tabs}}"></Tabs>
+<!-- 监听自定义事件事件 -->
+<Tabs tabs="{{Tabs}}" 
+  bindtabsItemChange="handleTabsItemChange"
+  >
+<block wx:if="{{Tabs[0].isActive}}">0</block>
+<block wx:elif="{{Tabs[1].isActive}}">1</block>
+<block wx:elif="{{Tabs[2].isActive}}">2</block>  
+</Tabs>

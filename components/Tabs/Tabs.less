@@ -1,17 +1,23 @@
+view{
+  box-sizing: border-box;
+}
 .tabs{
   .tabs_title{
     width: 100%;
-    padding: 15rpx;
     display: flex;
-    text-align: center;
     .title_item{
       flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15rpx 0;
     }
-    &.active{
-      border-bottom: 1px silid var(--themeColor);
+    .active{
+      color: var(--themeColor);
+      border-bottom: 5rpx solid var(--themeColor);
     }
   }
   .tabs_content{
 
   }
-}
+} 

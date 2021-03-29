@@ -1,12 +1,18 @@
+view {
+  box-sizing: border-box;
+}
 .tabs .tabs_title {
   width: 100%;
-  padding: 15rpx;
   display: flex;
-  text-align: center;
 }
 .tabs .tabs_title .title_item {
   flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15rpx 0;
 }
-.tabs .tabs_title.active {
-  border-bottom: 1px silid var(--themeColor);
+.tabs .tabs_title .active {
+  color: var(--themeColor);
+  border-bottom: 5rpx solid var(--themeColor);
 }

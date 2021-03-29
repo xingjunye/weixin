@@ -20,11 +20,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getCates();
+    const cates = wx.getStorageSync("cates");
+    if(!cates) {
+      this.getCates();
+    }else {
+      if(Date.now() - cates.time > 1000 * 10) {
+        this.getCates();
+      }else {
+        console.log(cates);
+        this.setData({
+          menuList: cates.data.message,
+          goodslist: cates.data.message[0].children
+        })
+      }
+    }
   },
 
   async getCates() {
     const res = await request(`${base}/categories`);
+    wx.setStorageSync("cates", {time: Date.now(), data: res.data});
     this.setData({
       menuList: res.data.message,
       goodslist: res.data.message[0].children

@@ -9,21 +9,28 @@ Page({
       },
       {
         id: 1,
-        value: '综合',
-        isActive: true
+        value: '销量',
+        isActive: false
       },
       {
         id: 2,
         value: '综合',
-        isActive: true
+        isActive: false
       },
     ]
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad(options) {
     console.log(options);
+  },
+  handleTabsItemChange(e) {
+    const { index } = e.detail;
+    const { Tabs } = this.data;
+    Tabs.forEach( (v, i) => i == index ? v.isActive = true : v.isActive = false )
+    this.setData({
+      Tabs
+    })
   }
-
 })
